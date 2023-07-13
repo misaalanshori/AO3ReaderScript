@@ -201,6 +201,21 @@
          * @returns {Promise<Blob>} The epub file
          */
         getEpub(id) {
+            return new Promise((resolve, reject) => {
+                GM_xmlhttpRequest({
+                    method: "GET",
+                    url: `https://archiveofourown.org/downloads/${id}/book.epub?updated_at=${Math.floor(Date.now()/1000)}`,
+                    responseType: "blob",
+                    redirect: "follow",
+                    fetch: true,
+                    onload: response => {
+                        resolve(response.response);
+                    },
+                    onerror: err => {
+                        reject(err);
+                    }
+                })
+            })
         }
     }
 
