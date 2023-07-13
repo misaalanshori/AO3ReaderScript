@@ -142,6 +142,40 @@
          * @returns {?AO3Work}
          */
         parseWorkPage(html) {
+            if (!html.querySelector("div.wrapper > dl.work.meta.group")) {
+                return null
+            }
+            return new AO3Work(
+                html.querySelector("li.share > a").attributes.href.value.split("/")[2].split("?")[0],
+                html.querySelector("h2.title.heading").textContent.trim(),
+                Array.from(html.querySelectorAll("h3.byline.heading > a")).map(e => {return new AO3Author(e.textContent.trim(), e.attributes.href.value)}),
+                Array.from(html.querySelectorAll("dd.rating.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
+                Array.from(html.querySelectorAll("dd.warning.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
+                Array.from(html.querySelectorAll("dd.relationship.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
+                Array.from(html.querySelectorAll("dd.character.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
+                Array.from(html.querySelectorAll("dd.freeform.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
+                html.querySelector("div.summary.module > blockquote") ? html.querySelector("div.summary.module > blockquote").innerText : "",
+                parseInt(html.querySelector("dd.chapters").textContent.split("/")[0].trim()),
+                parseInt(html.querySelector("dd.chapters").textContent.split("/")[1].trim()) || null,
+                new Date(html.querySelector("dd.published").textContent.trim()),
+                new Date((html.querySelector("dd.status") || html.querySelector("dd.published")).textContent.trim()),
+                html.querySelector("dd.words") ? parseInt(html.querySelector("dd.words").textContent.trim()) : 0,
+                html.querySelector("dd.comments") ? parseInt(html.querySelector("dd.comments").textContent.trim()) : 0,
+                html.querySelector("dd.kudos") ? parseInt(html.querySelector("dd.kudos").textContent.trim()) : 0,
+                html.querySelector("dd.bookmarks") ? parseInt(html.querySelector("dd.bookmarks").textContent.trim()) : 0,
+                html.querySelector("dd.hits") ? parseInt(html.querySelector("dd.hits").textContent.trim()) : 0,
+                html.querySelector("dd.language") ? html.querySelector("dd.language").textContent.trim() : "",
+                Array.from(html.querySelectorAll("dd.collections > ul > li > a")).map(e => {return new AO3Collection(e.textContent.trim(), e.attributes.href.value)}),
+                html.querySelector("div.series.module") ? new AO3WorkSeries(
+                    new AO3Series(
+                        html.querySelector("div.series.module > ul > li > span.series > span.position > a").textContent.trim(),
+                        html.querySelector("div.series.module > ul > li > span.series > span.position > a").attributes.href.value
+                    ),
+                    html.querySelector("div.series.module > ul > li > span.series > span.position").textContent.split(" ")[1],
+                    Array.from(document.body.querySelectorAll("div.series.module > ul > li > span.series > a.next")).map(e => e.attributes.href.value)[0] || "",
+                    Array.from(document.body.querySelectorAll("div.series.module > ul > li > span.series > a.previous")).map(e => e.attributes.href.value)[0] || ""
+                ) : null
+            );
         }
     } 
 
@@ -276,5 +310,19 @@
             
         }
     }
+    
+    class AppPlayground {
+        constructor() {
+            this.parser = new AO3Parser();
+        }
+
+        main() {
+            console.log(this.parser.parseWorkPage(document.body));
+        }
+    }
+
+    console.log("AO3 Library");
+    const playground = new AppPlayground();
+    playground.main();
     // Your code here...
 })();
