@@ -491,12 +491,31 @@
 
     class AppGUI {
 
+        constructor() {
+
+        }
+
+        loadCSS() {
+            css = `
+
+
+            `
+            document.head.innerHTML += `<style id=\"mystyling\">${css}</style>`
+        }
+
+        loadIntegration() {
+
+        }
+
+        loadReactApp() {
+
+        }
+
+        init() {
+            
+        };
     }
 
-    class AO3Integration {
-
-    }
-    
     class AppPlayground {
         constructor() {
             this.parser = AO3Parser;
@@ -521,7 +540,6 @@
         LibraryWork,
         StorageWrapper,
         AppGUI,
-        AO3Integration,
         AppPlayground
     }
 
