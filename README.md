@@ -1,2 +1,4 @@
 # AO3 Reader Userscript
 idk i wanted to make a little library ui thing for ao3, i made a scraper api for it and everything but then ao3 started using cloudflare so that api might have some problems now. So now I made it into a userscript instead, the hope is that since it can run in the browser acting as the ao3 website itself that it won't have any problems with authentication or cloudflare. also i just had one semester of object oriented programmming, so i wanted to try to make something with classes and stuff. in theory it shouldn't be *too* difficult to replace the code to work with my own external api or ao3's own api when it comes out. also not sure how well this technique of making the app as a userscript will work to circumvent any issues with scraping the site and cloudflare. 
+
+### now using vite, i guess... 
