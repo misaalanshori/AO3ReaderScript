@@ -1,80 +1,81 @@
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+div.a3r-container {
+  --dark-primary-color: #512DA8;
+  --light-primary-color: #D1C4E9;
+  --primary-color: #673AB7;
+  --text-color: #FFFFFF;
+  --accent-color: #E040FB;
+  --primary-text-color: #212121;
+  --secondary-text-color: #757575;
+  --divider-color: #BDBDBD;
+  --background-color: #F5F5F5;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.preact:hover {
-  filter: drop-shadow(0 0 2em #673ab8aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+div.a3r-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  height: 100%;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+div.a3r-appbar {
+  display: flex;
+  flex-direction: row;
+  height: 56px;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  align-items: center;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+div.a3r-appbar .left {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-items: stretch;
+  
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+div.a3r-appbar .right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding: 0px 16px;
+}
+
+div.a3r-appbar h5 {
+  margin: 0;
+  padding: 0;
+  margin-left: 16px;
+  font-size: larger;
+}
+
+
+div.a3r-contents {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.a3r-icons {
+  fill: var(--text-color);
+  width: 24px; 
+  filter: invert(100%);
+}
+
+.a3r-button {
+  all:initial;
+  display: flex;
+  justify-content: center;
+  height: 56px;
+  width: 56px;
+
+}
+
+.a3r-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }

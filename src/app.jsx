@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'preact/hooks';
-import preactLogo from './assets/preact.svg';
+import { Library } from './library';
+
 import './app.css';
-import viteLogo from './assets/vite.svg';
+
+import crossIcon from './assets/cross.svg';
+import refreshIcon from './assets/refresh.svg';
 
 import {GM} from '$';
 
-export function App({ CloseApp }) {
+export function App({ closeApp }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -17,23 +20,24 @@ export function App({ CloseApp }) {
   }, []);
 
   return (
-    <>
-      <button onClick={CloseApp}>
-          CLOSE
-        </button>
-      <br></br>
-      <h1>Vite + Preact</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => {GM.setValue('count', count+1); return count + 1})}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/app.jsx</code> and save to test HMR
-        </p>
+    <div class="a3r-container">
+      <div className="a3r-appbar">
+        <div className="left">
+          <h5>AO3 Reader</h5>
+        </div>
+        <div className="right">
+          <button class="a3r-button" onClick={Library.refresh}>
+            <img class="a3r-icons" src={refreshIcon} alt="refresh" />
+          </button>
+          <button class="a3r-button" onClick={closeApp}>
+            <img class="a3r-icons" src={crossIcon} alt="refresh" />
+          </button>
+        </div>
       </div>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
-      </p>
-    </>
+
+      <div className="a3r-contents">
+
+      </div>
+    </div>
   );
 }

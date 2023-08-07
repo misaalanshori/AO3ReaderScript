@@ -49,16 +49,18 @@ const AddButton = ({ workID }) => {
 const AppWrapper = () => {
   const [isAppVisible, setIsAppVisible] = useState(false);
   const openApp = () => {
+    document.body.style.overflow = "hidden"
     setIsAppVisible(true);
   }
   const closeApp = () => {
+    document.body.style.overflow = "visible"
     setIsAppVisible(false);
   }
   return (
     <>
       <a href="#" onClick={openApp}>AO3 Reader</a>
       <div className='AppWrapper' style={{display: isAppVisible ? "block" : "none"}}>
-        <App CloseApp={closeApp}/>
+        <App closeApp={closeApp}/>
       </div>
     </>
   )
@@ -84,6 +86,7 @@ try {
   // Add AO3 Reader to nav
   const nav = document.querySelector("ul.primary.navigation.actions");
   const navItem = document.createElement("li");
+  navItem.className = "dropdown";
   nav.append(navItem);
   render(<AppWrapper />, navItem);
 }
