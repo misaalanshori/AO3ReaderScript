@@ -1,6 +1,5 @@
-
 div.AppWrapper {
-  all: initial;
+  all: revert;
   position: fixed;
   top: 0;
   left: 0;

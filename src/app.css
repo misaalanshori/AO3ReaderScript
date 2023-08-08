@@ -14,8 +14,10 @@ div.a3r-container {
   display: flex;
   flex-direction: column;
   height: 100%;
+  color: var(--primary-text-color);
 }
 
+/* appbar */
 div.a3r-appbar {
   display: flex;
   flex-direction: row;
@@ -34,7 +36,7 @@ div.a3r-appbar .left {
   justify-content: flex-start;
   align-items: center;
   align-items: stretch;
-  
+  padding: 0px 16px;
 }
 
 div.a3r-appbar .right {
@@ -47,11 +49,11 @@ div.a3r-appbar .right {
   padding: 0px 16px;
 }
 
-div.a3r-appbar h5 {
+div.a3r-appbar h3 {
   margin: 0;
   padding: 0;
   margin-left: 16px;
-  font-size: larger;
+  font-size: x-large;
 }
 
 
@@ -60,6 +62,34 @@ div.a3r-contents {
   flex-direction: column;
   height: 100%;
 }
+
+div.a3r-contents * {
+  color: var(--primary-text-color) !important;
+}
+
+div.a3r-workList {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  padding-bottom: 50%;
+}
+
+div.a3r-workItem {
+  display: flex;
+  flex-direction: column;
+  border-bottom: var(--divider-color) 1px solid;
+  margin:8px 16px;
+  padding-bottom:16px;
+  align-items: flex-start;
+  text-align: start;
+  white-space: pre-line;
+}
+
+div.a3r-workItem-summary {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .a3r-icons {
   fill: var(--text-color);
