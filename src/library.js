@@ -92,10 +92,11 @@ const AO3Parser = {
             Array.from(html.querySelectorAll("h3.byline.heading > a")).map(e => {return new AO3Author(e.textContent.trim(), e.attributes.href.value)}),
             Array.from(html.querySelectorAll("dd.rating.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
             Array.from(html.querySelectorAll("dd.warning.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
+            Array.from(html.querySelectorAll("dd.fandom.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
             Array.from(html.querySelectorAll("dd.relationship.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
             Array.from(html.querySelectorAll("dd.character.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
             Array.from(html.querySelectorAll("dd.freeform.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
-            html.querySelector("div.summary.module > blockquote.userstuff") ? Array.from(html.querySelector("div.summary.module > blockquote.userstuff").childNodes).map(e => Array.from(e.childNodes).filter(e=>e.nodeName == "#text").map(v=>v.textContent).join("\n")).join("\n\n").trim()  : "",
+            html.querySelector("div.summary.module > blockquote.userstuff") ? Array.from(html.querySelector("div.summary.module > blockquote.userstuff").childNodes).map(e => Array.from(e.childNodes).map(v=>v.nodeName!="BR"?v.textContent:"\n").join("")).join("\n\n").trim()  : "",
             parseInt(html.querySelector("dd.chapters").textContent.split("/")[0].trim()),
             parseInt(html.querySelector("dd.chapters").textContent.split("/")[1].trim()) || null,
             new Date(html.querySelector("dd.published").textContent.trim()),
@@ -297,6 +298,7 @@ class AO3Work {
      * @param {AO3Author[]} authors Authors of the work
      * @param {AO3Tag[]} ratings ratings of the work
      * @param {AO3Tag[]} warnings Warnings of the work
+     * @param {AO3Tag[]} fandoms fandoms of the work
      * @param {AO3Tag[]} relationships Relationships of the work
      * @param {AO3Tag[]} characters Characters of the work
      * @param {AO3Tag[]} tags Tags of the work
@@ -314,12 +316,13 @@ class AO3Work {
      * @param {AO3Collection[]} collections Collections the work is in
      * @param {?AO3WorkSeries} series Series the work is in
      */
-    constructor(id, title, author, ratings, warnings, relationships, characters, tags, summary, chapters, totalChapters, published, updated, wordCount, commentCount, kudosCount, bookmarkCount, hitCount, language, collections, series) {
+    constructor(id, title, author, ratings, warnings, fandoms, relationships, characters, tags, summary, chapters, totalChapters, published, updated, wordCount, commentCount, kudosCount, bookmarkCount, hitCount, language, collections, series) {
         /**@type {string}*/ this.id = id;
         /**@type {string}*/ this.title = title;
         /**@type {AO3Author[]}*/ this.authors = author;
         /**@type {AO3Tag[]}*/ this.ratings = ratings;
         /**@type {AO3Tag[]}*/ this.warnings = warnings;
+        /**@type {AO3Tag[]}*/ this.fandoms = fandoms;
         /**@type {AO3Tag[]}*/ this.relationships = relationships;
         /**@type {AO3Tag[]}*/ this.characters = characters;
         /**@type {AO3Tag[]}*/ this.tags = tags;
@@ -351,11 +354,13 @@ class LibraryWork {
      * @constructor
      * @param {string} id ID of the work
      * @param {date} lastChecked Date and Time of last check
+     * @param {date} lastAccessed Date and Time of last read/access
      * @param {AO3Work[]} works Array of all versions of a work
      */
-    constructor(id, lastChecked, works) {
+    constructor(id, lastChecked, lastAccessed, works) {
         /**@type {string}*/ this.id = id;
         /**@type {date}*/ this.lastChecked = lastChecked;
+        /**@type {date}*/ this.lastAccessed = lastAccessed;
         /**@type {AO3Work[]}*/ this.works = works || [];
     }
 
@@ -406,6 +411,10 @@ class LibraryWork {
     getLatest() {
         return this.works[this.works.length-1];
     }
+
+    updateLastAccessed() {
+        this.lastAccessed = new Date();
+    }
 }
 
 export const Library = {
@@ -439,8 +448,9 @@ export const Library = {
      * @returns {Promise<LibraryWork>}
      */
     async addWork(id) {
-        var work = new LibraryWork(id, null, null);
+        var work = new LibraryWork(id, null, null, null);
         await work.updateWork();
+        work.lastAccessed = new Date(0);
         this.updateWork(work);
         return work;
     },

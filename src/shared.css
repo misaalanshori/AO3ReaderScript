@@ -1,0 +1,88 @@
+div.a3r .container {
+  --dark-primary-color: #512da8;
+  --light-primary-color: #d1c4e9;
+  --primary-color: #673ab7;
+  --text-color: #ffffff;
+  --accent-color: #e040fb;
+  --primary-text-color: #212121;
+  --secondary-text-color: #757575;
+  --divider-color: #bdbdbd;
+  --background-color: #f5f5f5;
+}
+
+div.a3r .container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--primary-text-color);
+}
+
+/* appbar */
+div.a3r .appbar {
+  display: flex;
+  flex-direction: row;
+  height: 56px;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  align-items: center;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+}
+
+div.a3r .appbar .left {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-items: stretch;
+  padding: 0px 16px;
+}
+
+div.a3r .appbar .right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding: 0px 16px;
+}
+
+div.a3r .appbar h3 {
+  margin: 0;
+  padding: 0;
+  font-size: x-large;
+}
+
+div.a3r .contents {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+div.a3r .contents * {
+  color: var(--primary-text-color) !important;
+}
+
+div.a3r .icons {
+  fill: var(--text-color);
+  width: 24px;
+}
+
+div.a3r .icons.white {
+    filter: invert(100%);
+}
+
+div.a3r .appbar .button {
+  all: initial;
+  display: flex;
+  justify-content: center;
+  height: 56px;
+  width: 56px;
+}
+
+div.a3r .appbar .button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

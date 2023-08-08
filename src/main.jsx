@@ -1,6 +1,7 @@
 import { render } from 'preact';
 import { useState, useEffect} from 'preact/hooks';
 import { App } from './app';
+import { DetailsApp } from './detailsApp';
 import './index.css';
 import { unsafeWindow } from '$';
 import { Library } from './library';
@@ -46,6 +47,28 @@ const AddButton = ({ workID }) => {
   );
 };
 
+const AppController = ({closeApp}) => {
+  const [currentApp, setCurrentApp] = useState("");
+  const [loadedWork, setLoadedWork] = useState(null);
+  const [loadedEpub, setLoadedEpub] = useState(null);
+  switch (currentApp) {
+    case "workDetails":
+      if (!loadedWork) {
+        setCurrentApp("");
+      }
+      return (<DetailsApp closeApp={closeApp} work={loadedWork} setLoadedEpub={setLoadedEpub} setCurrentApp={setCurrentApp}/>)
+    case "workReader":
+      setCurrentApp("workDetails");
+      // if (!loadedEpub) {
+      //   setCurrentApp("workDetails");
+      // }
+      // return (<App closeApp={closeApp}/>)
+    default:
+      return (<App closeApp={closeApp} setLoadedWork={setLoadedWork} setCurrentApp={setCurrentApp}/>)
+  }
+}
+
+
 const AppWrapper = () => {
   const [isAppVisible, setIsAppVisible] = useState(false);
   const openApp = () => {
@@ -56,15 +79,21 @@ const AppWrapper = () => {
     document.body.style.overflow = "visible"
     setIsAppVisible(false);
   }
+
+
+
+
+
   return (
     <>
       <a href="#" onClick={openApp}>AO3 Reader</a>
-      <div className='AppWrapper' style={{display: isAppVisible ? "block" : "none"}}>
-        <App closeApp={closeApp}/>
+      <div className='a3r' style={{display: isAppVisible ? "block" : "none"}}>
+        <AppController closeApp={closeApp}/>
       </div>
     </>
   )
 }
+
 
 try {
   console.log("=== AO3 Reader Starting! ===")

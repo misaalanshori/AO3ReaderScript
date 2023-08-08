@@ -1,0 +1,21 @@
+div.a3r .workDetails {
+    padding: 16px 32px;
+}
+
+div.a3r .workDetails .headers {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+div.a3r .workDetails .headers > * {
+    margin: 0px;
+}
+
+div.a3r .workDetails .headers > h4 {
+    font-size: xx-large;
+}
+
+div.a3r .workDetails .headers > h5 {
+    font-size: medium;
+}

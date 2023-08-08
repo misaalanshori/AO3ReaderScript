@@ -1,4 +1,4 @@
-div.AppWrapper {
+div.a3r {
   all: revert;
   position: fixed;
   top: 0;
@@ -7,4 +7,12 @@ div.AppWrapper {
   height: 100%;
   background-color: white;
   z-index: 100;
+}
+
+div.a3r * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+div.a3r *::after {
+  all: unset;
 }

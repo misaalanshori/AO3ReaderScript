@@ -16,7 +16,7 @@
 // @run-at     document-idle
 // ==/UserScript==
 
-(t=>{const r=document.createElement("style");r.dataset.source="vite-plugin-monkey",r.textContent=t,document.head.append(r)})(" div.a3r-container{--dark-primary-color: #512DA8;--light-primary-color: #D1C4E9;--primary-color: #673AB7;--text-color: #FFFFFF;--accent-color: #E040FB;--primary-text-color: #212121;--secondary-text-color: #757575;--divider-color: #BDBDBD;--background-color: #F5F5F5}div.a3r-container{display:flex;flex-direction:column;height:100%;color:var(--primary-text-color)}div.a3r-appbar{display:flex;flex-direction:row;height:56px;justify-content:center;background-color:var(--primary-color);color:var(--background-color);align-items:center;filter:drop-shadow(0px 0px 4px rgba(0,0,0,.5))}div.a3r-appbar .left{width:100%;display:flex;flex-direction:row;justify-content:flex-start;align-items:center;align-items:stretch;padding:0 16px}div.a3r-appbar .right{width:100%;height:100%;display:flex;flex-direction:row;justify-content:flex-end;align-items:stretch;padding:0 16px}div.a3r-appbar h3{padding:0;margin:0 0 0 16px;font-size:x-large}div.a3r-contents{display:flex;flex-direction:column;height:100%}div.a3r-contents *{color:var(--primary-text-color)!important}div.a3r-workList{display:flex;flex-direction:column;overflow:scroll;padding-bottom:50%}div.a3r-workItem{display:flex;flex-direction:column;border-bottom:var(--divider-color) 1px solid;margin:8px 16px;padding-bottom:16px;align-items:flex-start;text-align:start;white-space:pre-line}div.a3r-workItem-summary{display:flex;flex-direction:column}.a3r-icons{fill:var(--text-color);width:24px;filter:invert(100%)}.a3r-button{all:initial;display:flex;justify-content:center;height:56px;width:56px}.a3r-button:hover{background-color:#0000001a}div.AppWrapper{all:revert;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;z-index:100} ");
+(i=>{const r=document.createElement("style");r.dataset.source="vite-plugin-monkey",r.textContent=i,document.head.append(r)})(" div.a3r .modal{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#00000080;display:flex;justify-content:center;align-items:center;z-index:1000}div.a3r .modal>.box{background-color:#fff;padding:20px;border-radius:8px;box-shadow:0 0 10px #0003}div.a3r .modal>.box>.contents{display:flex;flex-direction:column}div.a3r .modal>.box>.actions{margin-top:20px;display:flex;flex-direction:row;justify-content:center;gap:4px}div.a3r .modal>.box>.actions>.button{background:initial;color:#fff;padding:8px 16px;border:1px solid #bdbdbd;border-radius:12px;cursor:pointer}div.a3r .modal>.box>.actions>.button:hover{background-color:#0003}div.a3r .workList{display:flex;flex-direction:column;overflow-x:scroll;padding:0 0 50%;width:100%}div.a3r .workItem *{transition:all .1s linear}div.a3r .workItem{display:flex;position:relative;flex-direction:column;border-bottom:var(--divider-color) 1px solid;margin:8px 0;padding-bottom:16px;align-items:stretch;text-align:start;white-space:pre-line}div.a3r .workItem>*{padding:0 16px}div.a3r .workItem .header{display:flex;flex-direction:row;align-items:center}div.a3r .workItem .header>.title{display:flex;flex-direction:column;font-size:large;padding-top:8px;padding-bottom:8px;width:100%}div.a3r .workItem .header>.title>*{margin:0}div.a3r .workItem .header:hover{background-color:#0000001a}div.a3r .workItem .tags{display:flex;flex-direction:column}div.a3r .workItem .tags:hover{background-color:#0000001a}div.a3r .workItem .tags .main,div.a3r .workItem .tags .expanded{display:flex;flex-direction:column}div.a3r .workItem .tags .main h5{margin:1px}div.a3r .workItem .summary{display:flex;flex-direction:column}div.a3r .workItem .summary:hover{background-color:#0000001a}div.a3r .workItem .trash{display:flex;flex-direction:column;align-items:center;justify-content:center}div.a3r .workItem .trash>.button{all:initial;display:flex;align-items:center;justify-content:center;height:56px;width:56px;border-radius:64px}div.a3r .workItem .trash>.button:hover{background-color:#0000001a}div.a3r .container{--dark-primary-color: #512da8;--light-primary-color: #d1c4e9;--primary-color: #673ab7;--text-color: #ffffff;--accent-color: #e040fb;--primary-text-color: #212121;--secondary-text-color: #757575;--divider-color: #bdbdbd;--background-color: #f5f5f5}div.a3r .container{display:flex;flex-direction:column;height:100%;color:var(--primary-text-color)}div.a3r .appbar{display:flex;flex-direction:row;height:56px;justify-content:center;background-color:var(--primary-color);color:var(--background-color);align-items:center;filter:drop-shadow(0px 0px 4px rgba(0,0,0,.5))}div.a3r .appbar .left{width:100%;display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;align-items:stretch;padding:0 16px}div.a3r .appbar .right{width:100%;height:100%;display:flex;flex-direction:row;justify-content:flex-end;align-items:stretch;padding:0 16px}div.a3r .appbar h3{margin:0;padding:0;font-size:x-large}div.a3r .contents{display:flex;flex-direction:column;height:100%;width:100%}div.a3r .contents *{color:var(--primary-text-color)!important}div.a3r .icons{fill:var(--text-color);width:24px}div.a3r .icons.white{filter:invert(100%)}div.a3r .appbar .button{all:initial;display:flex;justify-content:center;height:56px;width:56px}div.a3r .appbar .button:hover{background-color:#0000001a}div.a3r .workDetails{padding:16px 32px}div.a3r .workDetails .headers{display:flex;flex-direction:column;text-align:left}div.a3r .workDetails .headers>*{margin:0}div.a3r .workDetails .headers>h4{font-size:xx-large}div.a3r .workDetails .headers>h5{font-size:medium}div.a3r{all:revert;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;z-index:100}div.a3r *{font-family:Arial,Helvetica,sans-serif}div.a3r *:after{all:unset} ");
 
 (async function (preact) {
   'use strict';
@@ -220,13 +220,15 @@
         return new AO3Tag(e2.textContent.trim(), e2.attributes.href.value);
       }), Array.from(html.querySelectorAll("dd.warning.tags > ul > li > a")).map((e2) => {
         return new AO3Tag(e2.textContent.trim(), e2.attributes.href.value);
+      }), Array.from(html.querySelectorAll("dd.fandom.tags > ul > li > a")).map((e2) => {
+        return new AO3Tag(e2.textContent.trim(), e2.attributes.href.value);
       }), Array.from(html.querySelectorAll("dd.relationship.tags > ul > li > a")).map((e2) => {
         return new AO3Tag(e2.textContent.trim(), e2.attributes.href.value);
       }), Array.from(html.querySelectorAll("dd.character.tags > ul > li > a")).map((e2) => {
         return new AO3Tag(e2.textContent.trim(), e2.attributes.href.value);
       }), Array.from(html.querySelectorAll("dd.freeform.tags > ul > li > a")).map((e2) => {
         return new AO3Tag(e2.textContent.trim(), e2.attributes.href.value);
-      }), html.querySelector("div.summary.module > blockquote.userstuff") ? Array.from(html.querySelector("div.summary.module > blockquote.userstuff").childNodes).map((e2) => Array.from(e2.childNodes).filter((e3) => e3.nodeName == "#text").map((v2) => v2.textContent).join("\n")).join("\n\n").trim() : "", parseInt(html.querySelector("dd.chapters").textContent.split("/")[0].trim()), parseInt(html.querySelector("dd.chapters").textContent.split("/")[1].trim()) || null, new Date(html.querySelector("dd.published").textContent.trim()), new Date((html.querySelector("dd.status") || html.querySelector("dd.published")).textContent.trim()), html.querySelector("dd.words") ? parseInt(html.querySelector("dd.words").textContent.trim()) : 0, html.querySelector("dd.comments") ? parseInt(html.querySelector("dd.comments").textContent.trim()) : 0, html.querySelector("dd.kudos") ? parseInt(html.querySelector("dd.kudos").textContent.trim()) : 0, html.querySelector("dd.bookmarks") ? parseInt(html.querySelector("dd.bookmarks").textContent.trim()) : 0, html.querySelector("dd.hits") ? parseInt(html.querySelector("dd.hits").textContent.trim()) : 0, html.querySelector("dd.language") ? html.querySelector("dd.language").textContent.trim() : "", Array.from(html.querySelectorAll("dd.collections > ul > li > a")).map((e2) => {
+      }), html.querySelector("div.summary.module > blockquote.userstuff") ? Array.from(html.querySelector("div.summary.module > blockquote.userstuff").childNodes).map((e2) => Array.from(e2.childNodes).map((v2) => v2.nodeName != "BR" ? v2.textContent : "\n").join("")).join("\n\n").trim() : "", parseInt(html.querySelector("dd.chapters").textContent.split("/")[0].trim()), parseInt(html.querySelector("dd.chapters").textContent.split("/")[1].trim()) || null, new Date(html.querySelector("dd.published").textContent.trim()), new Date((html.querySelector("dd.status") || html.querySelector("dd.published")).textContent.trim()), html.querySelector("dd.words") ? parseInt(html.querySelector("dd.words").textContent.trim()) : 0, html.querySelector("dd.comments") ? parseInt(html.querySelector("dd.comments").textContent.trim()) : 0, html.querySelector("dd.kudos") ? parseInt(html.querySelector("dd.kudos").textContent.trim()) : 0, html.querySelector("dd.bookmarks") ? parseInt(html.querySelector("dd.bookmarks").textContent.trim()) : 0, html.querySelector("dd.hits") ? parseInt(html.querySelector("dd.hits").textContent.trim()) : 0, html.querySelector("dd.language") ? html.querySelector("dd.language").textContent.trim() : "", Array.from(html.querySelectorAll("dd.collections > ul > li > a")).map((e2) => {
         return new AO3Collection(e2.textContent.trim(), e2.attributes.href.value);
       }), html.querySelector("div.series.module") ? new AO3WorkSeries(new AO3Series(html.querySelector("div.series.module > ul > li > span.series > span.position > a").textContent.trim(), html.querySelector("div.series.module > ul > li > span.series > span.position > a").attributes.href.value), parseInt(html.querySelector("div.series.module > ul > li > span.series > span.position").textContent.split(" ")[1]), Array.from(document.body.querySelectorAll("div.series.module > ul > li > span.series > a.next")).map((e2) => e2.attributes.href.value)[0] || "", Array.from(document.body.querySelectorAll("div.series.module > ul > li > span.series > a.previous")).map((e2) => e2.attributes.href.value)[0] || "") : null);
     }
@@ -382,6 +384,7 @@
      * @param {AO3Author[]} authors Authors of the work
      * @param {AO3Tag[]} ratings ratings of the work
      * @param {AO3Tag[]} warnings Warnings of the work
+     * @param {AO3Tag[]} fandoms fandoms of the work
      * @param {AO3Tag[]} relationships Relationships of the work
      * @param {AO3Tag[]} characters Characters of the work
      * @param {AO3Tag[]} tags Tags of the work
@@ -399,12 +402,13 @@
      * @param {AO3Collection[]} collections Collections the work is in
      * @param {?AO3WorkSeries} series Series the work is in
      */
-    constructor(id, title, author, ratings, warnings, relationships, characters, tags, summary, chapters, totalChapters, published, updated, wordCount, commentCount, kudosCount, bookmarkCount, hitCount, language, collections, series) {
+    constructor(id, title, author, ratings, warnings, fandoms, relationships, characters, tags, summary, chapters, totalChapters, published, updated, wordCount, commentCount, kudosCount, bookmarkCount, hitCount, language, collections, series) {
       this.id = id;
       this.title = title;
       this.authors = author;
       this.ratings = ratings;
       this.warnings = warnings;
+      this.fandoms = fandoms;
       this.relationships = relationships;
       this.characters = characters;
       this.tags = tags;
@@ -431,11 +435,13 @@
      * @constructor
      * @param {string} id ID of the work
      * @param {date} lastChecked Date and Time of last check
+     * @param {date} lastAccessed Date and Time of last read/access
      * @param {AO3Work[]} works Array of all versions of a work
      */
-    constructor(id, lastChecked, works) {
+    constructor(id, lastChecked, lastAccessed, works) {
       this.id = id;
       this.lastChecked = lastChecked;
+      this.lastAccessed = lastAccessed;
       this.works = works || [];
     }
     /** 
@@ -481,6 +487,9 @@
     getLatest() {
       return this.works[this.works.length - 1];
     }
+    updateLastAccessed() {
+      this.lastAccessed = /* @__PURE__ */ new Date();
+    }
   }
   const Library = {
     /**@type {string[]} */
@@ -515,8 +524,9 @@
      * @returns {Promise<LibraryWork>}
      */
     async addWork(id) {
-      var work = new LibraryWork(id, null, null);
+      var work = new LibraryWork(id, null, null, null);
       await work.updateWork();
+      work.lastAccessed = /* @__PURE__ */ new Date(0);
       this.updateWork(work);
       return work;
     },
@@ -566,8 +576,6 @@
       GM_xmlhttpRequest: _GM_xmlhttpRequest
     }
   };
-  const crossIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIuMDIxIDUxMi4wMjEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMi4wMjEgNTEyLjAyMTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj4KPGc+Cgk8cGF0aCBkPSJNMzAxLjI1OCwyNTYuMDFMNTAyLjY0NSw1NC42NDVjMTIuNTAxLTEyLjUwMSwxMi41MDEtMzIuNzY5LDAtNDUuMjY5Yy0xMi41MDEtMTIuNTAxLTMyLjc2OS0xMi41MDEtNDUuMjY5LDBsMCwwICAgTDI1Ni4wMSwyMTAuNzYyTDU0LjY0NSw5LjM3NmMtMTIuNTAxLTEyLjUwMS0zMi43NjktMTIuNTAxLTQ1LjI2OSwwcy0xMi41MDEsMzIuNzY5LDAsNDUuMjY5TDIxMC43NjIsMjU2LjAxTDkuMzc2LDQ1Ny4zNzYgICBjLTEyLjUwMSwxMi41MDEtMTIuNTAxLDMyLjc2OSwwLDQ1LjI2OXMzMi43NjksMTIuNTAxLDQ1LjI2OSwwTDI1Ni4wMSwzMDEuMjU4bDIwMS4zNjUsMjAxLjM4NyAgIGMxMi41MDEsMTIuNTAxLDMyLjc2OSwxMi41MDEsNDUuMjY5LDBjMTIuNTAxLTEyLjUwMSwxMi41MDEtMzIuNzY5LDAtNDUuMjY5TDMwMS4yNTgsMjU2LjAxeiIvPgo8L2c+CgoKCgoKCgoKCgoKCgoKCjwvc3ZnPgo=";
-  const refreshIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTMuODA2IDUxMy44MDYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMy44MDYgNTEzLjgwNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj4KPGc+Cgk8cGF0aCBkPSJNNjYuMDc0LDIyOC43MzFDODEuNTc3LDEyMy4zNzksMTc5LjU0OSw1MC41NDIsMjg0LjkwMSw2Ni4wNDVjMzUuOTQ0LDUuMjg5LDY5LjY2MiwyMC42MjYsOTcuMjcsNDQuMjQ0bC0yNC44NTMsMjQuODUzICAgYy04LjMzLDguMzMyLTguMzI4LDIxLjg0LDAuMDA1LDMwLjE3YzMuOTk5LDMuOTk4LDkuNDIzLDYuMjQ1LDE1LjA3OCw2LjI0Nmg5Ny44MzVjMTEuNzgyLDAsMjEuMzMzLTkuNTUxLDIxLjMzMy0yMS4zMzNWNTIuMzkgICBjLTAuMDAzLTExLjc4Mi05LjU1Ni0yMS4zMzEtMjEuMzM4LTIxLjMyOWMtNS42NTUsMC4wMDEtMTEuMDc5LDIuMjQ4LTE1LjA3OCw2LjI0Nkw0MjcuNDE4LDY1LjA0ICAgQzMyMS42NTgtMjkuMjM1LDE1OS40OTctMTkuOTI1LDY1LjIyMiw4NS44MzVjLTMzLjM5OSwzNy40NjctNTUuMDczLDgzLjkwOS02Mi4zMzcsMTMzLjU3MyAgIGMtMi44NjQsMTcuNjA3LDkuMDg3LDM0LjIwMiwyNi42OTMsMzcuMDY2YzEuNTg2LDAuMjU4LDMuMTg4LDAuMzk3LDQuNzk1LDAuNDE3QzUwLjQ4MSwyNTYuNzE3LDY0LjAwMiwyNDQuNzA2LDY2LjA3NCwyMjguNzMxeiIvPgoJPHBhdGggZD0iTTQ3OS40MjksMjU2Ljg5MWMtMTYuMTA4LDAuMTc0LTI5LjYyOSwxMi4xODUtMzEuNzAxLDI4LjE2QzQzMi4yMjUsMzkwLjQwMywzMzQuMjUzLDQ2My4yNCwyMjguOTAxLDQ0Ny43MzggICBjLTM1Ljk0NC01LjI4OS02OS42NjItMjAuNjI2LTk3LjI3LTQ0LjI0NGwyNC44NTMtMjQuODUzYzguMzMtOC4zMzIsOC4zMjgtMjEuODQtMC4wMDUtMzAuMTcgICBjLTMuOTk5LTMuOTk4LTkuNDIzLTYuMjQ1LTE1LjA3OC02LjI0Nkg0My41NjhjLTExLjc4MiwwLTIxLjMzMyw5LjU1MS0yMS4zMzMsMjEuMzMzdjk3LjgzNSAgIGMwLjAwMywxMS43ODIsOS41NTYsMjEuMzMxLDIxLjMzOCwyMS4zMjljNS42NTUtMC4wMDEsMTEuMDc5LTIuMjQ4LDE1LjA3OC02LjI0NmwyNy43MzMtMjcuNzMzICAgYzEwNS43MzUsOTQuMjg1LDI2Ny44ODQsODUuMDA0LDM2Mi4xNy0yMC43MzJjMzMuNDE3LTM3LjQ3NSw1NS4xMDEtODMuOTMzLDYyLjM2My0xMzMuNjE1ICAgYzIuODc2LTE3LjYwNS05LjA2NC0zNC4yMDgtMjYuNjY4LTM3LjA4NEM0ODIuNjU1LDI1Ny4wNTEsNDgxLjA0NCwyNTYuOTEsNDc5LjQyOSwyNTYuODkxeiIvPgo8L2c+CgoKCgoKCgoKCgoKCgoKCjwvc3ZnPgo=";
   var _ = 0;
   function o(o2, e2, n, t2, f2, l2) {
     var s2, u2, a2 = {};
@@ -579,50 +587,204 @@
         void 0 === a2[u2] && (a2[u2] = s2[u2]);
     return preact.options.vnode && preact.options.vnode(i2), i2;
   }
-  function WorkList({
-    works
+  function Modal({
+    isOpen,
+    children
+  }) {
+    if (!isOpen)
+      return o(preact.Fragment, {});
+    return o("div", {
+      className: "modal",
+      children: o("div", {
+        className: "box",
+        children
+      })
+    });
+  }
+  function ModalContents({
+    children
   }) {
     return o("div", {
-      className: "a3r-workList",
-      children: works.map((work) => o("div", {
-        className: "a3r-workItem",
+      className: "contents",
+      children
+    });
+  }
+  function ModalActions({
+    children
+  }) {
+    return o("div", {
+      className: "actions",
+      children
+    });
+  }
+  function ModalButton({
+    onClick,
+    children
+  }) {
+    return o("button", {
+      className: "button",
+      onClick,
+      children
+    });
+  }
+  const exitIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiPgo8Zz4KCTxwYXRoIGQ9Ik0xNzAuNjk4LDQ0OEg3Mi43NTdjLTQuODE0LTAuMDEyLTguNzE0LTMuOTExLTguNzI1LTguNzI1VjcyLjcyNWMwLjAxMi00LjgxNCwzLjkxMS04LjcxNCw4LjcyNS04LjcyNWg5Ny45NDEgICBjMTcuNjczLDAsMzItMTQuMzI3LDMyLTMycy0xNC4zMjctMzItMzItMzJINzIuNzU3QzMyLjYxMSwwLjA0NywwLjA3OSwzMi41OCwwLjAzMiw3Mi43MjV2MzY2LjU0OSAgIEMwLjA3OSw0NzkuNDIsMzIuNjExLDUxMS45NTMsNzIuNzU3LDUxMmg5Ny45NDFjMTcuNjczLDAsMzItMTQuMzI3LDMyLTMyUzE4OC4zNzEsNDQ4LDE3MC42OTgsNDQ4eiIvPgoJPHBhdGggZD0iTTQ4My45MTQsMTg4LjExN2wtODIuODE2LTgyLjc1MmMtMTIuNTAxLTEyLjQ5NS0zMi43NjQtMTIuNDktNDUuMjU5LDAuMDExcy0xMi40OSwzMi43NjQsMC4wMTEsNDUuMjU5bDcyLjc4OSw3Mi43NjggICBMMTM4LjY5OCwyMjRjLTE3LjY3MywwLTMyLDE0LjMyNy0zMiwzMnMxNC4zMjcsMzIsMzIsMzJsMCwwbDI5MS4xMTUtMC41MzNsLTczLjk2Myw3My45NjMgICBjLTEyLjA0MiwxMi45MzYtMTEuMzE3LDMzLjE4NCwxLjYxOCw0NS4yMjZjMTIuMjk1LDExLjQ0NSwzMS4zNDYsMTEuNDM2LDQzLjYzLTAuMDIxbDgyLjc1Mi04Mi43NTIgICBjMzcuNDkxLTM3LjQ5LDM3LjQ5MS05OC4yNzQsMC4wMDEtMTM1Ljc2NGMwLDAtMC4wMDEtMC4wMDEtMC4wMDEtMC4wMDFMNDgzLjkxNCwxODguMTE3eiIvPgo8L2c+CgoKCgoKCgoKCgoKCgoKCjwvc3ZnPgo=";
+  const refreshIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTMuODA2IDUxMy44MDYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMy44MDYgNTEzLjgwNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj4KPGc+Cgk8cGF0aCBkPSJNNjYuMDc0LDIyOC43MzFDODEuNTc3LDEyMy4zNzksMTc5LjU0OSw1MC41NDIsMjg0LjkwMSw2Ni4wNDVjMzUuOTQ0LDUuMjg5LDY5LjY2MiwyMC42MjYsOTcuMjcsNDQuMjQ0bC0yNC44NTMsMjQuODUzICAgYy04LjMzLDguMzMyLTguMzI4LDIxLjg0LDAuMDA1LDMwLjE3YzMuOTk5LDMuOTk4LDkuNDIzLDYuMjQ1LDE1LjA3OCw2LjI0Nmg5Ny44MzVjMTEuNzgyLDAsMjEuMzMzLTkuNTUxLDIxLjMzMy0yMS4zMzNWNTIuMzkgICBjLTAuMDAzLTExLjc4Mi05LjU1Ni0yMS4zMzEtMjEuMzM4LTIxLjMyOWMtNS42NTUsMC4wMDEtMTEuMDc5LDIuMjQ4LTE1LjA3OCw2LjI0Nkw0MjcuNDE4LDY1LjA0ICAgQzMyMS42NTgtMjkuMjM1LDE1OS40OTctMTkuOTI1LDY1LjIyMiw4NS44MzVjLTMzLjM5OSwzNy40NjctNTUuMDczLDgzLjkwOS02Mi4zMzcsMTMzLjU3MyAgIGMtMi44NjQsMTcuNjA3LDkuMDg3LDM0LjIwMiwyNi42OTMsMzcuMDY2YzEuNTg2LDAuMjU4LDMuMTg4LDAuMzk3LDQuNzk1LDAuNDE3QzUwLjQ4MSwyNTYuNzE3LDY0LjAwMiwyNDQuNzA2LDY2LjA3NCwyMjguNzMxeiIvPgoJPHBhdGggZD0iTTQ3OS40MjksMjU2Ljg5MWMtMTYuMTA4LDAuMTc0LTI5LjYyOSwxMi4xODUtMzEuNzAxLDI4LjE2QzQzMi4yMjUsMzkwLjQwMywzMzQuMjUzLDQ2My4yNCwyMjguOTAxLDQ0Ny43MzggICBjLTM1Ljk0NC01LjI4OS02OS42NjItMjAuNjI2LTk3LjI3LTQ0LjI0NGwyNC44NTMtMjQuODUzYzguMzMtOC4zMzIsOC4zMjgtMjEuODQtMC4wMDUtMzAuMTcgICBjLTMuOTk5LTMuOTk4LTkuNDIzLTYuMjQ1LTE1LjA3OC02LjI0Nkg0My41NjhjLTExLjc4MiwwLTIxLjMzMyw5LjU1MS0yMS4zMzMsMjEuMzMzdjk3LjgzNSAgIGMwLjAwMywxMS43ODIsOS41NTYsMjEuMzMxLDIxLjMzOCwyMS4zMjljNS42NTUtMC4wMDEsMTEuMDc5LTIuMjQ4LDE1LjA3OC02LjI0NmwyNy43MzMtMjcuNzMzICAgYzEwNS43MzUsOTQuMjg1LDI2Ny44ODQsODUuMDA0LDM2Mi4xNy0yMC43MzJjMzMuNDE3LTM3LjQ3NSw1NS4xMDEtODMuOTMzLDYyLjM2My0xMzMuNjE1ICAgYzIuODc2LTE3LjYwNS05LjA2NC0zNC4yMDgtMjYuNjY4LTM3LjA4NEM0ODIuNjU1LDI1Ny4wNTEsNDgxLjA0NCwyNTYuOTEsNDc5LjQyOSwyNTYuODkxeiIvPgo8L2c+CgoKCgoKCgoKCgoKCgoKCjwvc3ZnPgo=";
+  const trashIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiPgo8Zz4KCTxwYXRoIGQ9Ik00OTAuNjY3LDk2YzAtMTcuNjczLTE0LjMyNy0zMi0zMi0zMmgtODAuNTU1QzM2NC42MzIsMjUuNzU3LDMyOC41NDksMC4xMywyODgsMGgtNjQgICBjLTQwLjU0OSwwLjEzLTc2LjYzMiwyNS43NTctOTAuMTEyLDY0SDUzLjMzM2MtMTcuNjczLDAtMzIsMTQuMzI3LTMyLDMybDAsMGMwLDE3LjY3MywxNC4zMjcsMzIsMzIsMzJINjR2MjY2LjY2NyAgIEM2NCw0NTkuNDY4LDExNi41MzIsNTEyLDE4MS4zMzMsNTEyaDE0OS4zMzNDMzk1LjQ2OCw1MTIsNDQ4LDQ1OS40NjgsNDQ4LDM5NC42NjdWMTI4aDEwLjY2NyAgIEM0NzYuMzQsMTI4LDQ5MC42NjcsMTEzLjY3Myw0OTAuNjY3LDk2eiBNMzg0LDM5NC42NjdDMzg0LDQyNC4xMjIsMzYwLjEyMiw0NDgsMzMwLjY2Nyw0NDhIMTgxLjMzMyAgIEMxNTEuODc4LDQ0OCwxMjgsNDI0LjEyMiwxMjgsMzk0LjY2N1YxMjhoMjU2VjM5NC42Njd6Ii8+Cgk8cGF0aCBkPSJNMjAyLjY2NywzODRjMTcuNjczLDAsMzItMTQuMzI3LDMyLTMyVjIyNGMwLTE3LjY3My0xNC4zMjctMzItMzItMzJzLTMyLDE0LjMyNy0zMiwzMnYxMjggICBDMTcwLjY2NywzNjkuNjczLDE4NC45OTQsMzg0LDIwMi42NjcsMzg0eiIvPgoJPHBhdGggZD0iTTMwOS4zMzMsMzg0YzE3LjY3MywwLDMyLTE0LjMyNywzMi0zMlYyMjRjMC0xNy42NzMtMTQuMzI3LTMyLTMyLTMycy0zMiwxNC4zMjctMzIsMzJ2MTI4ICAgQzI3Ny4zMzMsMzY5LjY3MywyOTEuNjYsMzg0LDMwOS4zMzMsMzg0eiIvPgo8L2c+CgoKCgoKCgoKCgoKCgoKCjwvc3ZnPgo=";
+  function WorkItemHeader({
+    work,
+    openWork
+  }) {
+    return o("div", {
+      className: "title",
+      onClick: openWork,
+      children: [o("h4", {
+        children: o("strong", {
+          children: work.getLatest().title
+        })
+      }), o("h5", {
+        children: ["by ", work.getLatest().authors.map((e2) => e2.name).join(" ,")]
+      })]
+    });
+  }
+  function WorkItemTags({
+    work
+  }) {
+    const [isExpanded, setIsExpanded] = h(false);
+    function toggleExpanded() {
+      setIsExpanded(!isExpanded);
+    }
+    return o("div", {
+      className: "tags",
+      onClick: toggleExpanded,
+      children: [o("div", {
+        className: "main",
+        children: [o("h5", {
+          children: work.getLatest().ratings.map((e2) => e2.name).join(", ")
+        }), o("h5", {
+          children: work.getLatest().fandoms.map((e2) => e2.name).join(", ")
+        })]
+      }), o("div", {
+        className: "expanded",
+        style: {
+          display: isExpanded ? "flex" : "none"
+        },
+        children: [o("h5", {
+          children: work.getLatest().warnings.map((e2) => e2.name).join(", ")
+        }), o("h5", {
+          children: work.getLatest().relationships.map((e2) => e2.name).join(", ")
+        }), o("h5", {
+          children: work.getLatest().characters.map((e2) => e2.name).join(", ")
+        }), o("h5", {
+          children: work.getLatest().tags.map((e2) => e2.name).join(", ")
+        })]
+      })]
+    });
+  }
+  function WorkItemSummary({
+    work
+  }) {
+    const [isExpanded, setIsExpanded] = h(false);
+    function toggleExpanded() {
+      setIsExpanded(!isExpanded);
+    }
+    return o("div", {
+      className: "summary",
+      onClick: toggleExpanded,
+      children: [o("h5", {
+        children: o("strong", {
+          children: "Summary:"
+        })
+      }), o("p", {
+        children: isExpanded ? work.getLatest().summary : work.getLatest().summary.split("\n")[0].split(" ").slice(0, 32).join(" ") + "..."
+      })]
+    });
+  }
+  function WorkList({
+    works,
+    openWork,
+    deleteWork
+  }) {
+    const [isOpen, setIsOpen] = h(false);
+    const [workDelete, setWorkDelete] = h(null);
+    return o("div", {
+      className: "workList",
+      children: [works.map((work) => o("div", {
+        className: "workItem",
         children: [o("div", {
-          className: "a3r-workItem-header",
-          children: o("h4", {
-            children: [o("strong", {
-              children: work.getLatest().title
-            }), " by ", work.getLatest().authors.map((e2) => e2.name).join(" ,")]
-          })
-        }), o("div", {
-          className: "a3r-workItem-tags"
-        }), o("div", {
-          className: "a3r-workItem-summary",
-          children: [o("h5", {
-            children: o("strong", {
-              children: "Summary:"
+          className: "header",
+          children: [o(WorkItemHeader, {
+            work,
+            openWork: () => {
+              openWork(work);
+            }
+          }), o("div", {
+            className: "trash",
+            children: o("button", {
+              class: "button",
+              onClick: () => {
+                setWorkDelete(work);
+                setIsOpen(true);
+              },
+              children: o("img", {
+                class: "icons",
+                src: trashIcon,
+                alt: "refresh"
+              })
             })
+          })]
+        }), o(WorkItemTags, {
+          work
+        }), o(WorkItemSummary, {
+          work
+        })]
+      })), o(Modal, {
+        isOpen,
+        children: [o(ModalContents, {
+          children: [o("h3", {
+            children: "Delete Work?"
           }), o("p", {
-            children: work.getLatest().summary
+            children: "This action is irreversible"
+          })]
+        }), o(ModalActions, {
+          children: [o(ModalButton, {
+            onClick: () => {
+              deleteWork(workDelete);
+              setIsOpen(false);
+            },
+            children: "Delete"
+          }), o(ModalButton, {
+            onClick: () => setIsOpen(false),
+            children: "Close"
           })]
         })]
-      }))
+      })]
     });
   }
   function App({
-    closeApp
+    closeApp,
+    setLoadedWork,
+    setCurrentApp
   }) {
     const [works, setWorks] = h([]);
     async function refresh() {
       await Library.refresh();
       setWorks(Library.works);
     }
+    function openWork(work) {
+      setLoadedWork(work);
+      setCurrentApp("workDetails");
+    }
+    async function deleteWork(work) {
+      await Library.deleteWork(work.id);
+      refresh();
+    }
     p(() => {
       refresh();
     }, []);
     return o("div", {
-      class: "a3r-container",
+      class: "container",
       children: [o("div", {
-        className: "a3r-appbar",
+        className: "appbar",
         children: [o("div", {
           className: "left",
           children: o("h3", {
@@ -631,27 +793,109 @@
         }), o("div", {
           className: "right",
           children: [o("button", {
-            class: "a3r-button",
+            class: "button",
             onClick: refresh,
             children: o("img", {
-              class: "a3r-icons",
+              class: "icons white",
               src: refreshIcon,
               alt: "refresh"
             })
           }), o("button", {
-            class: "a3r-button",
+            class: "button",
             onClick: closeApp,
             children: o("img", {
-              class: "a3r-icons",
-              src: crossIcon,
+              class: "icons white",
+              src: exitIcon,
               alt: "refresh"
             })
           })]
         })]
       }), o("div", {
-        className: "a3r-contents",
+        className: "contents",
         children: o(WorkList, {
-          works
+          works,
+          openWork,
+          deleteWork
+        })
+      })]
+    });
+  }
+  const arrowLeftIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJCb2xkIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48cGF0aCBkPSJNNC45NDMsNS42MDYsMS4wMjQsOS41MjVhMy41ODUsMy41ODUsMCwwLDAsMCw0Ljk1bDMuOTE5LDMuOTE5YTEuNSwxLjUsMCwxLDAsMi4xMjEtMi4xMjFMNC4yODUsMTMuNDkybDE4LjI1LS4wMjNhMS41LDEuNSwwLDAsMCwxLjUtMS41djBhMS41LDEuNSwwLDAsMC0xLjUtMS41TDQuMywxMC40OTIsNy4wNjQsNy43MjdBMS41LDEuNSwwLDAsMCw0Ljk0Myw1LjYwNloiLz48L3N2Zz4K";
+  function DetailsApp({
+    closeApp,
+    work,
+    setLoadedEpub,
+    setCurrentApp
+  }) {
+    p(() => {
+    }, []);
+    function back() {
+      setCurrentApp("");
+    }
+    return o("div", {
+      class: "container",
+      children: [o("div", {
+        className: "appbar",
+        children: [o("div", {
+          className: "left",
+          children: o("button", {
+            class: "button",
+            onClick: back,
+            children: o("img", {
+              class: "icons white",
+              src: arrowLeftIcon,
+              alt: "back"
+            })
+          })
+        }), o("div", {
+          className: "right",
+          children: o("button", {
+            class: "button",
+            onClick: closeApp,
+            children: o("img", {
+              class: "icons white",
+              src: exitIcon,
+              alt: "close"
+            })
+          })
+        })]
+      }), o("div", {
+        className: "contents",
+        children: o("div", {
+          className: "workDetails",
+          children: [o("div", {
+            className: "headers",
+            children: [o("h4", {
+              children: o("strong", {
+                children: work.getLatest().title
+              })
+            }), o("h5", {
+              children: ["by ", work.getLatest().authors.map((e2) => e2.name).join(" ,")]
+            })]
+          }), o("div", {
+            className: "actions",
+            children: o("div", {
+              className: "buttons",
+              children: [o("div", {
+                className: "row",
+                children: [o("button", {
+                  type: "button",
+                  children: "Read in Reader"
+                }), o("button", {
+                  type: "button",
+                  children: "Read in AO3"
+                })]
+              }), o("div", {
+                className: "row",
+                children: o("button", {
+                  type: "button",
+                  children: "Update Work"
+                })
+              })]
+            })
+          }), o("div", {
+            className: "info"
+          })]
         })
       })]
     });
@@ -691,6 +935,33 @@
       children: buttonText
     });
   };
+  const AppController = ({
+    closeApp
+  }) => {
+    const [currentApp, setCurrentApp] = h("");
+    const [loadedWork, setLoadedWork] = h(null);
+    const [loadedEpub, setLoadedEpub] = h(null);
+    switch (currentApp) {
+      case "workDetails":
+        if (!loadedWork) {
+          setCurrentApp("");
+        }
+        return o(DetailsApp, {
+          closeApp,
+          work: loadedWork,
+          setLoadedEpub,
+          setCurrentApp
+        });
+      case "workReader":
+        setCurrentApp("workDetails");
+      default:
+        return o(App, {
+          closeApp,
+          setLoadedWork,
+          setCurrentApp
+        });
+    }
+  };
   const AppWrapper = () => {
     const [isAppVisible, setIsAppVisible] = h(false);
     const openApp = () => {
@@ -707,11 +978,11 @@
         onClick: openApp,
         children: "AO3 Reader"
       }), o("div", {
-        className: "AppWrapper",
+        className: "a3r",
         style: {
           display: isAppVisible ? "block" : "none"
         },
-        children: o(App, {
+        children: o(AppController, {
           closeApp
         })
       })]

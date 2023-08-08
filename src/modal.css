@@ -1,0 +1,49 @@
+/* Modal */
+div.a3r .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+div.a3r .modal > .box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Contents */
+div.a3r .modal > .box > .contents {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal Actions */
+div.a3r .modal > .box > .actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4px;
+}
+
+/* Modal Button */
+div.a3r .modal > .box > .actions > .button {
+    background: initial;
+    color: white;
+    padding: 8px 16px;
+    border: 1px solid #bdbdbd;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+div.a3r .modal > .box > .actions > .button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
