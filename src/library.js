@@ -95,7 +95,7 @@ const AO3Parser = {
             Array.from(html.querySelectorAll("dd.relationship.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
             Array.from(html.querySelectorAll("dd.character.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
             Array.from(html.querySelectorAll("dd.freeform.tags > ul > li > a")).map(e => {return new AO3Tag(e.textContent.trim(), e.attributes.href.value)}),
-            html.querySelector("div.summary.module > blockquote") ? html.querySelector("div.summary.module > blockquote").innerText : "",
+            html.querySelector("div.summary.module > blockquote.userstuff") ? Array.from(html.querySelector("div.summary.module > blockquote.userstuff").childNodes).map(e => Array.from(e.childNodes).filter(e=>e.nodeName == "#text").map(v=>v.textContent).join("\n")).join("\n\n").trim()  : "",
             parseInt(html.querySelector("dd.chapters").textContent.split("/")[0].trim()),
             parseInt(html.querySelector("dd.chapters").textContent.split("/")[1].trim()) || null,
             new Date(html.querySelector("dd.published").textContent.trim()),
