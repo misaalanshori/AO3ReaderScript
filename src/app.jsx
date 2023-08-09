@@ -80,7 +80,7 @@ function WorkList({ works, openWork, deleteWork}) {
       <Modal isOpen={isOpen}>
           <ModalContents>
               <h3>Delete Work?</h3>
-              <p>This action is irreversible</p>
+              <p>This work and its version history will be deleted. <br/>This action is irreversible! </p>
           </ModalContents>
           <ModalActions>
               <ModalButton onClick={()=> {deleteWork(workDelete); setIsOpen(false)}}>Delete</ModalButton>
@@ -116,6 +116,9 @@ export function App({ closeApp, setLoadedWork, setCurrentApp }) {
 
   return (
     <div class="container">
+      <div className="contents">
+        <WorkList works={works} openWork={openWork} deleteWork={deleteWork}/>
+      </div>
       <div className="appbar">
         <div className="left">
           <h3>AO3 Reader</h3>
@@ -128,10 +131,6 @@ export function App({ closeApp, setLoadedWork, setCurrentApp }) {
             <img class="icons white" src={exitIcon} alt="refresh" />
           </button>
         </div>
-      </div>
-
-      <div className="contents">
-        <WorkList works={works} openWork={openWork} deleteWork={deleteWork}/>
       </div>
     </div>
   );

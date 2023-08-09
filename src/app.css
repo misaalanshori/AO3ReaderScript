@@ -1,19 +1,16 @@
 div.a3r .workList {
   display: flex;
   flex-direction: column;
-  overflow-x: scroll;
-  padding: 0px 0px 50% 0px;
-  width:100%;
+  width: 100%;
+  height: 100%;
 }
 
 div.a3r .workItem * {
   transition: all .1s linear;
 }
 
-
 div.a3r .workItem {
   display: flex;
-  position: relative;
   flex-direction: column;
   border-bottom: var(--divider-color) 1px solid;
   margin:8px 0px;
@@ -22,6 +19,8 @@ div.a3r .workItem {
   text-align: start;
   white-space: pre-line;
 }
+
+
 
 div.a3r .workItem > * {
   padding: 0px 16px;
@@ -48,9 +47,6 @@ div.a3r .workItem .header:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* div.a3r .workItem .header * {
-  margin: 0px;
-} */
 
 div.a3r .workItem .tags {
   display: flex;
@@ -78,6 +74,7 @@ div.a3r .workItem .tags .main h5 {
 div.a3r .workItem .summary {
   display: flex;
   flex-direction: column;
+  padding-bottom: 8px;
 }
 
 div.a3r .workItem .summary:hover {

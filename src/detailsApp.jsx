@@ -19,18 +19,8 @@ export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
 
   return (
     <div class="container">
-      <div className="appbar">
-        <div className="left">
-          <button class="button" onClick={back}>
-            <img class="icons white" src={arrowLeftIcon} alt="back" />
-          </button>
-        </div>
-        <div className="right">
-          <button class="button" onClick={closeApp}>
-            <img class="icons white" src={exitIcon} alt="close" />
-          </button>
-        </div>
-      </div>
+      
+      
 
       <div className="contents">
         <div className="workDetails">
@@ -54,6 +44,18 @@ export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
         
 
         
+      </div>
+      <div className="appbar">
+        <div className="left">
+          <button class="button" onClick={back}>
+            <img class="icons white" src={arrowLeftIcon} alt="back" />
+          </button>
+        </div>
+        <div className="right">
+          <button class="button" onClick={closeApp}>
+            <img class="icons white" src={exitIcon} alt="close" />
+          </button>
+        </div>
       </div>
     </div>
   );

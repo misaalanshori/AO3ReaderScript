@@ -58,6 +58,7 @@ div.a3r .appbar h3 {
 div.a3r .contents {
   display: flex;
   flex-direction: column;
+  overflow: scroll;
   height: 100%;
   width: 100%;
 }

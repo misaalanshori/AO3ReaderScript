@@ -47,6 +47,27 @@ const AddButton = ({ workID }) => {
   );
 };
 
+
+function insertButtons() {
+  // Remove existing buttons
+  for (const button of document.querySelectorAll("div.a3r-actions")) {
+    button.remove();
+  }
+  // Insert
+  for (const work of document.querySelectorAll("li.blurb.group")) {
+    const id = work.querySelector("h4.heading > a").attributes.href.value.split("/")[2];
+    const header = work.querySelector("div.header.module")
+    const buttonDiv = document.createElement("div");
+    buttonDiv.className = "a3r-actions";
+    header.append(buttonDiv);
+    render(<AddButton workID={id} />, buttonDiv);
+  }
+}
+
+
+
+
+
 const AppController = ({closeApp}) => {
   const [currentApp, setCurrentApp] = useState("");
   const [loadedWork, setLoadedWork] = useState(null);
@@ -77,6 +98,7 @@ const AppWrapper = () => {
   }
   const closeApp = () => {
     document.body.style.overflow = "visible"
+    insertButtons();
     setIsAppVisible(false);
   }
 
@@ -95,6 +117,7 @@ const AppWrapper = () => {
 }
 
 
+
 try {
   console.log("=== AO3 Reader Starting! ===")
   unsafeWindow.library = Library;
@@ -104,18 +127,13 @@ try {
 } finally {
 
   // Add buttons to works
-  for (const work of document.querySelectorAll("li.blurb.group")) {
-    const id = work.querySelector("h4.heading > a").attributes.href.value.split("/")[2];
-    const header = work.querySelector("div.header.module")
-    const buttonDiv = document.createElement("div");
-    header.append(buttonDiv);
-    render(<AddButton workID={id} />, buttonDiv);
-  }
+  insertButtons();
 
   // Add AO3 Reader to nav
+  document.querySelector(".a3r-open")?.remove();
   const nav = document.querySelector("ul.primary.navigation.actions");
   const navItem = document.createElement("li");
-  navItem.className = "dropdown";
+  navItem.className = "a3r-open dropdown";
   nav.append(navItem);
   render(<AppWrapper />, navItem);
 }
