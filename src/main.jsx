@@ -94,17 +94,17 @@ const AppWrapper = () => {
   const [isAppVisible, setIsAppVisible] = useState(false);
   const openApp = () => {
     document.body.style.overflow = "hidden"
+    document.body.style.overscrollBehavior = "none"
+    document.querySelector("html").style.overscrollBehavior = "none"
     setIsAppVisible(true);
   }
   const closeApp = () => {
     document.body.style.overflow = "visible"
+    document.body.style.overscrollBehavior = ""
+    document.querySelector("html").style.overscrollBehavior = ""
     insertButtons();
     setIsAppVisible(false);
   }
-
-
-
-
 
   return (
     <>

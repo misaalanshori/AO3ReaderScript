@@ -1,6 +1,9 @@
 div.a3r .workDetails {
+    display: flex;
+    flex-direction: column;
     padding: 16px 32px;
     height: 100%;
+    gap:16px;
 }
 
 div.a3r .workDetails .headers {
@@ -19,4 +22,37 @@ div.a3r .workDetails .headers > h4 {
 
 div.a3r .workDetails .headers > h5 {
     font-size: medium;
+}
+
+
+div.a3r .buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+div.a3r .buttons > .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+div.a3r .buttons > .row > a {
+    all: initial;
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    padding: 4px 12px;
+    margin: 2px 2px !important;
+    border: none;
+    border-radius: 2em !important;
+    text-align: center !important;
+    font-size: medium !important;
+    background-color: var(--primary-color) !important;
+    color: var(--text-color) !important;
+}
+
+div.a3r .buttons > .row > a:hover {
+    filter: brightness(85%) !important;
 }

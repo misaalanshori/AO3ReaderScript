@@ -116,19 +116,26 @@ export function App({ closeApp, setLoadedWork, setCurrentApp }) {
 
   return (
     <div class="container">
-      <div className="contents">
-        <WorkList works={works} openWork={openWork} deleteWork={deleteWork}/>
-      </div>
       <div className="appbar">
         <div className="left">
           <h3>AO3 Reader</h3>
         </div>
         <div className="right" >
-          <button class="button" onClick={refresh}>
-            <img class="icons white" src={refreshIcon} alt="refresh" />
-          </button>
           <button class="button" onClick={closeApp}>
             <img class="icons white" src={exitIcon} alt="refresh" />
+          </button>
+        </div>
+      </div>
+      <div className="contents">
+        <WorkList works={works} openWork={openWork} deleteWork={deleteWork}/>
+      </div>
+      <div className="appbar">
+        <div className="left">
+          <h3>Library</h3>
+        </div>
+        <div className="right" >
+          <button class="button" onClick={refresh}>
+            <img class="icons white" src={refreshIcon} alt="refresh" />
           </button>
         </div>
       </div>

@@ -20,7 +20,16 @@ export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
   return (
     <div class="container">
       
-      
+      <div className="appbar">
+        <div className="left">
+          <h3>AO3 Reader</h3>
+        </div>
+        <div className="right" >
+          <button class="button" onClick={closeApp}>
+            <img class="icons white" src={exitIcon} alt="refresh" />
+          </button>
+        </div>
+      </div>
 
       <div className="contents">
         <div className="workDetails">
@@ -31,11 +40,11 @@ export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
           <div className="actions">
             <div className="buttons">
               <div className='row'>
-                <button type="button">Read in Reader</button>
-                <button type="button">Read in AO3</button>
+                <a>Read in Reader</a>
+                <a href={`/works/${work.getLatest().id}`} target="_blank">Read in AO3</a>
               </div>
               <div className='row'>
-                <button type="button">Update Work</button>
+                <a>Update Work</a>
               </div>
             </div>
           </div>
@@ -47,13 +56,12 @@ export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
       </div>
       <div className="appbar">
         <div className="left">
-          <button class="button" onClick={back}>
-            <img class="icons white" src={arrowLeftIcon} alt="back" />
-          </button>
+          <h3>Details</h3>
+          
         </div>
         <div className="right">
-          <button class="button" onClick={closeApp}>
-            <img class="icons white" src={exitIcon} alt="close" />
+          <button class="button" onClick={back}>
+            <img class="icons white" src={arrowLeftIcon} alt="back" />
           </button>
         </div>
       </div>
