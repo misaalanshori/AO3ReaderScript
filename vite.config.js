@@ -19,6 +19,8 @@ export default defineConfig({
       build: {
         externalGlobals: {
           preact: cdn.jsdelivr('preact', 'dist/preact.min.js'),
+          jszip: cdn.jsdelivr('JSZip', 'dist/jszip.min.js'),
+          epubjs: cdn.jsdelivr('ePub', 'dist/epub.min.js'),
         },
       },
     }),

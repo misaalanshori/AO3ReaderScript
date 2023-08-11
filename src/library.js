@@ -56,10 +56,12 @@ const blobSerializer = {
 };
   
 const objectSerializer = {
+    datePattern: /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i,
+
     serialize(classInstance) {
         return JSON.stringify(classInstance, (key, value) => {
             if (value && typeof(value) === "object") {
-            value.__type = value.constructor.name;
+                value.__type = value.constructor.name;
             }
             return value;
         });
@@ -70,6 +72,8 @@ const objectSerializer = {
             const DynamicClass = classes[value.__type] || Object
             value = Object.assign(new DynamicClass(), value);
             delete value.__type;
+          } else if (this.datePattern.test(value)) {
+            value = new Date(value);
           }
           return value;
         });
@@ -167,6 +171,7 @@ const AO3AccessObject = {
 const LibraryStorageObject = {
     libraryStore: new StorageWrapper("libraryStore"),
     epubStore: new StorageWrapper("epubStore"),
+    locationStore: new StorageWrapper("locationStore"),
 
     /**
      * 
@@ -221,7 +226,21 @@ const LibraryStorageObject = {
         } else {
             return epubs;
         }
+    },
+
+    async storeLocation(id, location) {
+        return this.locationStore.set(id, location);
+    },
+
+    async getLocation(id) {
+        return this.locationStore.get(id);
+    },
+
+    deleteLocation(id) {
+        return this.locationStore.delete(id);
     }
+
+
 }
 
 
@@ -415,6 +434,18 @@ class LibraryWork {
     updateLastAccessed() {
         this.lastAccessed = new Date();
     }
+
+    getReadingLocation() {
+        return LibraryStorageObject.getLocation(this.id);
+    }
+
+    setReadingLocation(location) {
+        LibraryStorageObject.storeLocation(this.id, location);
+    }
+
+    resetReadingLocation() {
+        LibraryStorageObject.deleteLocation(this.id);
+    }
 }
 
 export const Library = {
@@ -467,6 +498,17 @@ export const Library = {
             await LibraryStorageObject.deleteEpub(id, new Date(parseInt(epub.split("_")[1])));
         }
         await LibraryStorageObject.deleteWork(id);
+    },
+
+    async getWorkUpdate(work) {
+        var newWork = await AO3AccessObject.getWork(work.id);
+        if (work.getLatest().updated.toString() == newWork.updated.toString()) {
+            work.works.pop();
+        }
+        work.works.push(newWork);
+        await LibraryStorageObject.storeEpub(work.id, newWork.updated, await AO3AccessObject.getWorkEpub(work.id));
+        work.lastChecked = new Date();
+        await this.updateWork(work);
     },
 
     /**

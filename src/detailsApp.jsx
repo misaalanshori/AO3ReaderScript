@@ -9,12 +9,36 @@ import arrowLeftIcon from './assets/arrow-left.svg';
 
 
 export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
+  const [isUpdateButtonDisabled, setIsUpdateButtonDisabled] = useState(false);
+  const [updateButtonText, setUpdateButtonText] = useState("Update Work");
 
   useEffect(() => {
   }, []);
 
   function back() {
     setCurrentApp("");
+  }
+
+  async function openWork() {
+    setLoadedEpub(await work.getLatest().getEpub());
+    setCurrentApp("workReader");
+  }
+
+  async function updateWork() {
+    setUpdateButtonText("Updating...");
+    setIsUpdateButtonDisabled(true);
+    try {
+      await Library.getWorkUpdate(work);
+      setUpdateButtonText("Updated!");
+      setTimeout(() => {
+        setUpdateButtonText("Update Work");
+        setIsUpdateButtonDisabled(false);
+      }, 1000);
+    } catch (error) {
+      setUpdateButtonText("Update Work Failed!");
+      setIsUpdateButtonDisabled(false);
+    }
+    
   }
 
   return (
@@ -32,6 +56,12 @@ export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
       </div>
 
       <div className="contents">
+        <div className="workInfo">
+            <h4><strong>Summary:</strong></h4>
+            <p>{work.getLatest().summary}</p>
+            <p><strong>Last Updated: </strong>{work.getLatest().updated.toString()}</p>
+        </div>
+      
         <div className="workDetails">
           <div className="headers">
             <h4><strong>{work.getLatest().title}</strong></h4>
@@ -40,16 +70,17 @@ export function DetailsApp({ closeApp, work, setLoadedEpub, setCurrentApp }) {
           <div className="actions">
             <div className="buttons">
               <div className='row'>
-                <a>Read in Reader</a>
+                <a href="#" onClick={openWork}>Read in Reader</a>
                 <a href={`/works/${work.getLatest().id}`} target="_blank">Read in AO3</a>
               </div>
               <div className='row'>
-                <a>Update Work</a>
+                <a href="#" onClick={isUpdateButtonDisabled ? ()=>{} : updateWork}>{updateButtonText}</a>
               </div>
             </div>
           </div>
           <div className="info"></div>
         </div>
+        
         
 
         

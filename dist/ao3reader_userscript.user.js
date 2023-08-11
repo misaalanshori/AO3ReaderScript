@@ -6,6 +6,8 @@
 // @icon       https://www.google.com/s2/favicons?sz=64&domain=archiveofourown.org
 // @match      https://archiveofourown.org/*
 // @require    https://cdn.jsdelivr.net/npm/preact@10.16.0/dist/preact.min.js
+// @require    https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js
+// @require    https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js
 // @connect    download.archiveofourown.org
 // @grant      GM.deleteValue
 // @grant      GM.getValue
@@ -16,9 +18,9 @@
 // @run-at     document-idle
 // ==/UserScript==
 
-(i=>{const r=document.createElement("style");r.dataset.source="vite-plugin-monkey",r.textContent=i,document.head.append(r)})(" div.a3r .modal{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#00000080;display:flex;justify-content:center;align-items:center;z-index:1000}div.a3r .modal>.box{background-color:#fff;padding:20px;border-radius:8px;box-shadow:0 0 10px #0003}div.a3r .modal>.box>.contents{display:flex;flex-direction:column}div.a3r .modal>.box>.actions{margin-top:20px;display:flex;flex-direction:row;justify-content:center;gap:4px}div.a3r .modal>.box>.actions>.button{background:initial;color:#fff;padding:8px 16px;border:1px solid #bdbdbd;border-radius:12px;cursor:pointer}div.a3r .modal>.box>.actions>.button:hover{background-color:#0003}div.a3r .workList{display:flex;flex-direction:column;width:100%;height:100%}div.a3r .workItem *{transition:all .1s linear}div.a3r .workItem{display:flex;flex-direction:column;border-bottom:var(--divider-color) 1px solid;margin:8px 0;padding-bottom:16px;align-items:stretch;text-align:start;white-space:pre-line}div.a3r .workItem>*{padding:0 16px}div.a3r .workItem .header{display:flex;flex-direction:row;align-items:center}div.a3r .workItem .header>.title{display:flex;flex-direction:column;font-size:large;padding-top:8px;padding-bottom:8px;width:100%}div.a3r .workItem .header>.title>*{margin:0}div.a3r .workItem .header:hover{background-color:#0000001a}div.a3r .workItem .tags{display:flex;flex-direction:column}div.a3r .workItem .tags:hover{background-color:#0000001a}div.a3r .workItem .tags .main,div.a3r .workItem .tags .expanded{display:flex;flex-direction:column}div.a3r .workItem .tags .main h5{margin:1px}div.a3r .workItem .summary{display:flex;flex-direction:column;padding-bottom:8px}div.a3r .workItem .summary:hover{background-color:#0000001a}div.a3r .workItem .trash{display:flex;flex-direction:column;align-items:center;justify-content:center}div.a3r .workItem .trash>.button{all:initial;display:flex;align-items:center;justify-content:center;height:56px;width:56px;border-radius:64px}div.a3r .workItem .trash>.button:hover{background-color:#0000001a}div.a3r .container{--dark-primary-color: #512da8;--light-primary-color: #d1c4e9;--primary-color: #673ab7;--text-color: #ffffff;--accent-color: #e040fb;--primary-text-color: #212121;--secondary-text-color: #757575;--divider-color: #bdbdbd;--background-color: #f5f5f5}div.a3r .container{display:flex;flex-direction:column;height:100%;color:var(--primary-text-color)}div.a3r .appbar{display:flex;flex-direction:row;height:56px;justify-content:center;background-color:var(--primary-color);color:var(--background-color);align-items:center;filter:drop-shadow(0px 0px 4px rgba(0,0,0,.5))}div.a3r .appbar .left{width:100%;display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;align-items:stretch;padding:0 16px}div.a3r .appbar .right{width:100%;display:flex;flex-direction:row;justify-content:flex-end;align-items:flex-end;align-items:stretch;padding:0 16px}div.a3r .appbar h3{margin:0;padding:0;font-size:x-large}div.a3r .contents{display:flex;flex-direction:column;overflow:scroll;height:100%;width:100%}div.a3r .contents *{color:var(--primary-text-color)!important}div.a3r .icons{fill:var(--text-color);width:24px}div.a3r .icons.white{filter:invert(100%)}div.a3r .appbar .button{all:initial;display:flex;justify-content:center;height:56px;width:56px}div.a3r .appbar .button:hover{background-color:#0000001a}div.a3r .workDetails{display:flex;flex-direction:column;padding:16px 32px;height:100%;gap:16px}div.a3r .workDetails .headers{display:flex;flex-direction:column;text-align:left}div.a3r .workDetails .headers>*{margin:0}div.a3r .workDetails .headers>h4{font-size:xx-large}div.a3r .workDetails .headers>h5{font-size:medium}div.a3r .buttons{display:flex;flex-direction:column}div.a3r .buttons>.row{width:100%;display:flex;flex-direction:row;justify-content:center}div.a3r .buttons>.row>a{all:initial;display:block;text-decoration:none;width:100%;height:100%;padding:4px 12px;margin:2px!important;border:none;border-radius:2em!important;text-align:center!important;font-size:medium!important;background-color:var(--primary-color)!important;color:var(--text-color)!important}div.a3r .buttons>.row>a:hover{filter:brightness(85%)!important}div.a3r{all:revert;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;z-index:100}div.a3r *{font-family:Arial,Helvetica,sans-serif!important}div.a3r *:after{all:unset} ");
+(i=>{const r=document.createElement("style");r.dataset.source="vite-plugin-monkey",r.textContent=i,document.head.append(r)})(" div.a3r .modal{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#00000080;display:flex;justify-content:center;align-items:center;z-index:1000}div.a3r .modal>.box{background-color:#fff;padding:20px;border-radius:8px;box-shadow:0 0 10px #0003}div.a3r .modal>.box>.contents{display:flex;flex-direction:column}div.a3r .modal>.box>.actions{margin-top:20px;display:flex;flex-direction:row;justify-content:center;gap:4px}div.a3r .modal>.box>.actions>.button{background:initial;color:#fff;padding:8px 16px;border:1px solid #bdbdbd;border-radius:12px;cursor:pointer}div.a3r .modal>.box>.actions>.button:hover{background-color:#0003}div.a3r .workList{display:flex;flex-direction:column;width:100%;height:100%}div.a3r .workItem *{transition:all .1s linear}div.a3r .workItem{display:flex;flex-direction:column;border-bottom:var(--divider-color) 1px solid;margin:8px 0;padding-bottom:16px;align-items:stretch;text-align:start;white-space:pre-line}div.a3r .workItem>*{padding:0 16px}div.a3r .workItem .header{display:flex;flex-direction:row;align-items:center}div.a3r .workItem .header>.title{display:flex;flex-direction:column;font-size:large;padding-top:8px;padding-bottom:8px;width:100%}div.a3r .workItem .header>.title>*{margin:0}div.a3r .workItem .header:hover{background-color:#0000001a}div.a3r .workItem .tags{display:flex;flex-direction:column}div.a3r .workItem .tags:hover{background-color:#0000001a}div.a3r .workItem .tags .main,div.a3r .workItem .tags .expanded{display:flex;flex-direction:column}div.a3r .workItem .tags .main h5{margin:1px}div.a3r .workItem .summary{display:flex;flex-direction:column;padding-bottom:8px}div.a3r .workItem .summary:hover{background-color:#0000001a}div.a3r .workItem .trash{display:flex;flex-direction:column;align-items:center;justify-content:center}div.a3r .workItem .trash>.button{all:initial;display:flex;align-items:center;justify-content:center;height:56px;width:56px;border-radius:64px}div.a3r .workItem .trash>.button:hover{background-color:#0000001a}div.a3r .container{--dark-primary-color: #512da8;--light-primary-color: #d1c4e9;--primary-color: #673ab7;--text-color: #ffffff;--accent-color: #e040fb;--primary-text-color: #212121;--secondary-text-color: #757575;--divider-color: #bdbdbd;--background-color: #f5f5f5}div.a3r .container{display:flex;flex-direction:column;height:100%;color:var(--primary-text-color)}div.a3r .appbar{display:flex;flex-direction:row;height:56px;justify-content:center;background-color:var(--primary-color);color:var(--background-color);align-items:center;filter:drop-shadow(0px 0px 4px rgba(0,0,0,.5))}div.a3r .appbar .left{width:100%;display:flex;flex-direction:row;justify-content:flex-start;align-items:flex-start;align-items:stretch;padding:0 16px}div.a3r .appbar .right{width:100%;display:flex;flex-direction:row;justify-content:flex-end;align-items:flex-end;align-items:stretch;padding:0 16px}div.a3r .appbar h3{margin:0;padding:0;font-size:x-large}div.a3r .contents{display:flex;flex-direction:column;overflow:scroll;height:100%;width:100%}div.a3r .contents *{color:var(--primary-text-color)!important}div.a3r .icons{fill:var(--text-color);width:24px}div.a3r .icons.white{filter:invert(100%)}div.a3r .appbar .button{all:initial;display:flex;justify-content:center;height:56px;width:56px}div.a3r .appbar .button:hover{background-color:#0000001a}div.a3r .workDetails{display:flex;flex-direction:column;padding:16px 32px;gap:16px;border-top:1px solid var(--divider-color);background-color:#fff;filter:drop-shadow(0px 0px 4px rgba(0,0,0,.5))}div.a3r .workDetails .headers{display:flex;flex-direction:column;text-align:left}div.a3r .workDetails .headers>*{margin:0}div.a3r .workDetails .headers>h4{font-size:xx-large}div.a3r .workDetails .headers>h5{font-size:medium}div.a3r .workInfo{padding:8px 16px;display:flex;flex-direction:column;text-align:left;gap:8px;white-space:pre-line}div.a3r .workInfo{display:flex;height:100%}div.a3r .buttons{display:flex;flex-direction:column}div.a3r .buttons>.row{width:100%;display:flex;flex-direction:row;justify-content:center}div.a3r .buttons>.row>a{all:initial;display:block;text-decoration:none;width:100%;height:100%;padding:4px 12px;margin:2px!important;border:none;border-radius:2em!important;text-align:center!important;font-size:medium!important;background-color:var(--primary-color)!important;color:var(--text-color)!important}div.a3r .buttons>.row>a:hover{filter:brightness(85%)!important}div.a3r{all:revert;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#fff;z-index:100}div.a3r *{font-family:Arial,Helvetica,sans-serif!important}div.a3r *:after{all:unset} ");
 
-(async function (preact) {
+(async function (preact, ePub, jszip) {
   'use strict';
 
   var _a;
@@ -70,6 +72,15 @@
   function p(u2, i2) {
     var o2 = d(t++, 3);
     !preact.options.__s && z(o2.__H, i2) && (o2.__ = u2, o2.i = i2, r.__H.__h.push(o2));
+  }
+  function _$1(n) {
+    return o$1 = 5, F(function() {
+      return { current: n };
+    }, []);
+  }
+  function F(n, r2) {
+    var u2 = d(t++, 7);
+    return z(u2.__H, r2) ? (u2.__V = n(), u2.i = r2, u2.__h = n, u2.__V) : u2.__;
   }
   function b() {
     for (var t2; t2 = f.shift(); )
@@ -187,6 +198,7 @@
     }
   };
   const objectSerializer = {
+    datePattern: /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(([+-]\d\d:\d\d)|Z)?$/i,
     serialize(classInstance) {
       return JSON.stringify(classInstance, (key, value) => {
         if (value && typeof value === "object") {
@@ -201,6 +213,8 @@
           const DynamicClass = classes[value.__type] || Object;
           value = Object.assign(new DynamicClass(), value);
           delete value.__type;
+        } else if (this.datePattern.test(value)) {
+          value = new Date(value);
         }
         return value;
       });
@@ -274,6 +288,7 @@
   const LibraryStorageObject = {
     libraryStore: new StorageWrapper("libraryStore"),
     epubStore: new StorageWrapper("epubStore"),
+    locationStore: new StorageWrapper("locationStore"),
     /**
      * 
      * @param {LibraryWork} work 
@@ -320,6 +335,15 @@
       } else {
         return epubs;
       }
+    },
+    async storeLocation(id, location) {
+      return this.locationStore.set(id, location);
+    },
+    async getLocation(id) {
+      return this.locationStore.get(id);
+    },
+    deleteLocation(id) {
+      return this.locationStore.delete(id);
     }
   };
   class AO3Tag {
@@ -491,6 +515,15 @@
     updateLastAccessed() {
       this.lastAccessed = /* @__PURE__ */ new Date();
     }
+    getReadingLocation() {
+      return LibraryStorageObject.getLocation(this.id);
+    }
+    setReadingLocation(location) {
+      LibraryStorageObject.storeLocation(this.id, location);
+    }
+    resetReadingLocation() {
+      LibraryStorageObject.deleteLocation(this.id);
+    }
   }
   const Library = {
     /**@type {string[]} */
@@ -542,6 +575,16 @@
         await LibraryStorageObject.deleteEpub(id, new Date(parseInt(epub.split("_")[1])));
       }
       await LibraryStorageObject.deleteWork(id);
+    },
+    async getWorkUpdate(work) {
+      var newWork = await AO3AccessObject.getWork(work.id);
+      if (work.getLatest().updated.toString() == newWork.updated.toString()) {
+        work.works.pop();
+      }
+      work.works.push(newWork);
+      await LibraryStorageObject.storeEpub(work.id, newWork.updated, await AO3AccessObject.getWorkEpub(work.id));
+      work.lastChecked = /* @__PURE__ */ new Date();
+      await this.updateWork(work);
     },
     /**
      * Updates the stored library work
@@ -839,10 +882,31 @@
     setLoadedEpub,
     setCurrentApp
   }) {
+    const [isUpdateButtonDisabled, setIsUpdateButtonDisabled] = h(false);
+    const [updateButtonText, setUpdateButtonText] = h("Update Work");
     p(() => {
     }, []);
     function back() {
       setCurrentApp("");
+    }
+    async function openWork() {
+      setLoadedEpub(await work.getLatest().getEpub());
+      setCurrentApp("workReader");
+    }
+    async function updateWork() {
+      setUpdateButtonText("Updating...");
+      setIsUpdateButtonDisabled(true);
+      try {
+        await Library.getWorkUpdate(work);
+        setUpdateButtonText("Updated!");
+        setTimeout(() => {
+          setUpdateButtonText("Update Work");
+          setIsUpdateButtonDisabled(false);
+        }, 1e3);
+      } catch (error) {
+        setUpdateButtonText("Update Work Failed!");
+        setIsUpdateButtonDisabled(false);
+      }
     }
     return o("div", {
       class: "container",
@@ -867,7 +931,20 @@
         })]
       }), o("div", {
         className: "contents",
-        children: o("div", {
+        children: [o("div", {
+          className: "workInfo",
+          children: [o("h4", {
+            children: o("strong", {
+              children: "Summary:"
+            })
+          }), o("p", {
+            children: work.getLatest().summary
+          }), o("p", {
+            children: [o("strong", {
+              children: "Last Updated: "
+            }), work.getLatest().updated.toString()]
+          })]
+        }), o("div", {
           className: "workDetails",
           children: [o("div", {
             className: "headers",
@@ -885,6 +962,8 @@
               children: [o("div", {
                 className: "row",
                 children: [o("a", {
+                  href: "#",
+                  onClick: openWork,
                   children: "Read in Reader"
                 }), o("a", {
                   href: `/works/${work.getLatest().id}`,
@@ -894,14 +973,17 @@
               }), o("div", {
                 className: "row",
                 children: o("a", {
-                  children: "Update Work"
+                  href: "#",
+                  onClick: isUpdateButtonDisabled ? () => {
+                  } : updateWork,
+                  children: updateButtonText
                 })
               })]
             })
           }), o("div", {
             className: "info"
           })]
-        })
+        })]
       }), o("div", {
         className: "appbar",
         children: [o("div", {
@@ -924,6 +1006,144 @@
       })]
     });
   }
+  const angleRightIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJCb2xkIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48cGF0aCBkPSJNNi4wNzksMjIuNWExLjUsMS41LDAsMCwxLC40NC0xLjA2bDcuNjcyLTcuNjcyYTIuNSwyLjUsMCwwLDAsMC0zLjUzNkw2LjUyOSwyLjU2NUExLjUsMS41LDAsMCwxLDguNjUuNDQ0bDcuNjYyLDcuNjYxYTUuNTA2LDUuNTA2LDAsMCwxLDAsNy43NzlMOC42NCwyMy41NTZBMS41LDEuNSwwLDAsMSw2LjA3OSwyMi41WiIvPjwvc3ZnPgo=";
+  const angleLeftIcon = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJCb2xkIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj48cGF0aCBkPSJNMTcuOTIxLDEuNTA1YTEuNSwxLjUsMCwwLDEtLjQ0LDEuMDZMOS44MDksMTAuMjM3YTIuNSwyLjUsMCwwLDAsMCwzLjUzNmw3LjY2Miw3LjY2MmExLjUsMS41LDAsMCwxLTIuMTIxLDIuMTIxTDcuNjg4LDE1LjlhNS41MDYsNS41MDYsMCwwLDEsMC03Ljc3OUwxNS4zNi40NDRhMS41LDEuNSwwLDAsMSwyLjU2MSwxLjA2MVoiLz48L3N2Zz4K";
+  const getChapter = (href, rendition) => {
+    href = href.replace(" ", "%20");
+    function flatten(items) {
+      return [].concat.apply([], items.map((item) => [].concat.apply([item], flatten(item.subitems))));
+    }
+    console.log(href, rendition);
+    var matches = flatten(rendition.book.navigation.toc).filter((item) => rendition.book.canonical(item.href) == rendition.book.canonical(href));
+    if (matches.length != 1) {
+      console.log("Unable to get chapter title", event, matches);
+      return null;
+    }
+    return matches[0].label.trim();
+  };
+  const EpubViewer = ({
+    epub,
+    location,
+    onLocationChange,
+    getRendition
+  }) => {
+    async function initReader() {
+      const bookData = await epub.arrayBuffer();
+      console.log("Epub Loaded, byte length: ", bookData.byteLength);
+      const book = ePub(bookData);
+      console.log("Initializing epub viewer");
+      const rendition = book.renderTo("a3r-epub-viewer", {
+        width: "100%",
+        height: "100%"
+      });
+      _unsafeWindow.epubrendition = rendition;
+      rendition.display();
+      console.log("Epub Displayed");
+      if (location) {
+        rendition.display(location);
+      }
+      getRendition(rendition);
+      rendition.on("relocated", (location2) => {
+        onLocationChange(location2);
+      });
+      return () => {
+        book.destroy();
+        _unsafeWindow.epubrendition = null;
+      };
+    }
+    p(() => {
+      initReader();
+    }, []);
+    return o("div", {
+      id: "a3r-epub-viewer",
+      style: {
+        width: "100%",
+        height: "100%"
+      }
+    });
+  };
+  function ReaderApp({
+    closeApp,
+    work,
+    epub,
+    setCurrentApp
+  }) {
+    const [chapterTitle, setChapterTitle] = h("");
+    const [epubLocation, setEpubLocation] = h(0);
+    const renditionRef = _$1(null);
+    p(() => {
+      return () => {
+      };
+    }, []);
+    function back() {
+      setCurrentApp("workDetails");
+    }
+    function updateLocation(location) {
+      work.setReadingLocation(location);
+      setEpubLocation(location);
+    }
+    function nextPage() {
+      renditionRef.current.next();
+    }
+    function prevPage() {
+      renditionRef.current.prev();
+    }
+    function loadRendition(rendition) {
+      renditionRef.current = rendition;
+      renditionRef.current.on("relocated", (location) => {
+        const chapter = getChapter(location.start.href, renditionRef.current) || "";
+        setChapterTitle(chapter);
+      });
+    }
+    return o("div", {
+      class: "container",
+      children: [o("div", {
+        className: "contents",
+        children: o(EpubViewer, {
+          epub,
+          location: epubLocation,
+          onLocationChange: updateLocation,
+          getRendition: loadRendition
+        })
+      }), o("div", {
+        className: "appbar",
+        children: [o("div", {
+          className: "left",
+          children: o("h4", {
+            children: chapterTitle
+          })
+        }), o("div", {
+          className: "right",
+          children: [o("button", {
+            class: "button",
+            onClick: back,
+            children: o("img", {
+              class: "icons white",
+              src: arrowLeftIcon,
+              alt: "back"
+            })
+          }), o("button", {
+            class: "button",
+            onClick: prevPage,
+            children: o("img", {
+              class: "icons white",
+              src: angleLeftIcon,
+              alt: "back"
+            })
+          }), o("button", {
+            class: "button",
+            onClick: nextPage,
+            children: o("img", {
+              class: "icons white",
+              src: angleRightIcon,
+              alt: "back"
+            })
+          })]
+        })]
+      })]
+    });
+  }
+  console.log("JSLib Version: ", jszip.version);
   const AddButton = ({
     workID
   }) => {
@@ -992,7 +1212,15 @@
           setCurrentApp
         });
       case "workReader":
-        setCurrentApp("workDetails");
+        if (!loadedEpub) {
+          setCurrentApp("workDetails");
+        }
+        return o(ReaderApp, {
+          closeApp,
+          work: loadedWork,
+          epub: loadedEpub,
+          setCurrentApp
+        });
       default:
         return o(App, {
           closeApp,
@@ -1048,4 +1276,4 @@
     preact.render(o(AppWrapper, {}), navItem);
   }
 
-})(preact);
+})(preact, ePub, JSZip);

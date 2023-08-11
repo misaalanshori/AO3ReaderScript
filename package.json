@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "epubjs": "^0.3.93",
+    "jszip": "^3.10.1",
     "preact": "^10.16.0"
   },
   "devDependencies": {

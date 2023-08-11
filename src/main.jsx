@@ -2,12 +2,14 @@ import { render } from 'preact';
 import { useState, useEffect} from 'preact/hooks';
 import { App } from './app';
 import { DetailsApp } from './detailsApp';
+import { ReaderApp } from './readerApp';
 import './index.css';
 import { unsafeWindow } from '$';
 import { Library } from './library';
+import { version as jszipVersion }  from 'jszip'
 
 
-
+console.log("JSLib Version: ", jszipVersion)
 const AddButton = ({ workID }) => {
   const [buttonText, setButtonText] = useState('Add to Library');
   const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -79,11 +81,10 @@ const AppController = ({closeApp}) => {
       }
       return (<DetailsApp closeApp={closeApp} work={loadedWork} setLoadedEpub={setLoadedEpub} setCurrentApp={setCurrentApp}/>)
     case "workReader":
-      setCurrentApp("workDetails");
-      // if (!loadedEpub) {
-      //   setCurrentApp("workDetails");
-      // }
-      // return (<App closeApp={closeApp}/>)
+      if (!loadedEpub) {
+        setCurrentApp("workDetails");
+      }
+      return (<ReaderApp closeApp={closeApp} work={loadedWork} epub={loadedEpub} setCurrentApp={setCurrentApp}/>)
     default:
       return (<App closeApp={closeApp} setLoadedWork={setLoadedWork} setCurrentApp={setCurrentApp}/>)
   }

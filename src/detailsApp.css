@@ -2,8 +2,10 @@ div.a3r .workDetails {
     display: flex;
     flex-direction: column;
     padding: 16px 32px;
-    height: 100%;
     gap:16px;
+    border-top: 1px solid var(--divider-color);
+    background-color: white;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 }
 
 div.a3r .workDetails .headers {
@@ -24,6 +26,19 @@ div.a3r .workDetails .headers > h5 {
     font-size: medium;
 }
 
+div.a3r .workInfo {
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+    white-space: pre-line;
+}
+
+div.a3r .workInfo {
+    display: flex;
+    height: 100%;
+}
 
 div.a3r .buttons {
     display: flex;
